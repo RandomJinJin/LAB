@@ -7,11 +7,11 @@
 
   --color-background: #f5f5f5;
   --color-foreground: #1a1a1a;
-  --color-card: #fbfbfb;
+  --color-card: #ffffff;
   --color-card-foreground: #1a1a1a;
   --color-muted: #eeeeee;
   --color-muted-foreground: #6b6b6b;
-  --color-border: #d4d4d4;
+  --color-border: #c6c6c6;
   --color-accent: #3f3f3f;
   --color-accent-foreground: #f5f5f5;
 }
@@ -32,7 +32,7 @@
   }
 }
 
-/* iso-card：卡片面 + 45° 硬边立体层 */
+/* iso-card：直角卡片面 + 右下浅灰硬边立体层 */
 .iso-depth {
   position: absolute;
   inset: 0;
@@ -44,14 +44,17 @@
 .iso-depth__layer {
   position: absolute;
   inset: 0;
-  border-radius: 16px;
+}
+
+.iso-depth__layer:last-child {
+  border: 1px solid var(--color-border);
 }
 
 .iso-face {
   position: relative;
   z-index: 1;
-  border-radius: 16px;
   border: 1px solid var(--color-border);
+  background-color: var(--color-card);
   transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -63,14 +66,68 @@
   transform: translate(1px, 1px);
 }
 
+/* iso-button：直角按钮 + 3px 偏移轮廓，对应 cardprompt 的 IsoButton depth=3 */
+.iso-button {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  height: 2rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card);
+  color: var(--color-foreground);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  transition: transform 150ms ease;
+}
+
+.iso-button::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  transform: translate(var(--iso-button-depth, 3px), var(--iso-button-depth, 3px));
+  border: 1px solid var(--color-border);
+  background-color: transparent;
+}
+
+.iso-button[data-variant="solid"] {
+  border-color: var(--color-foreground);
+  background-color: var(--color-foreground);
+  color: var(--color-background);
+}
+
+.iso-button[data-variant="solid"]::before {
+  background-color: transparent;
+}
+
+.iso-button:hover {
+  transform: translate(-1px, -1px);
+}
+
+.iso-button:active {
+  transform: none;
+}
+
+.iso-button:focus-visible {
+  outline: 2px solid var(--color-foreground);
+  outline-offset: 3px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .iso-depth,
-  .iso-face {
+  .iso-face,
+  .iso-button {
     transition: none;
   }
 
   .iso-card:hover .iso-face,
-  .iso-card:hover .iso-depth {
+  .iso-card:hover .iso-depth,
+  .iso-button:hover {
     transform: none;
   }
 }

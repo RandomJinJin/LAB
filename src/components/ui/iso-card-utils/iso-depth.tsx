@@ -2,8 +2,8 @@ import * as React from "react";
 
 type IsoDepthStyle = React.CSSProperties & { "--iso-depth": string };
 
-const FROM: [number, number, number] = [232, 232, 232];
-const TO: [number, number, number] = [176, 176, 176];
+const FROM: [number, number, number] = [244, 244, 244];
+const TO: [number, number, number] = [232, 232, 232];
 
 /** 按层号在浅灰到深灰之间取色，形成硬边立体感。 */
 function layerColor(step: number, depth: number) {

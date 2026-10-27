@@ -9,7 +9,7 @@ type IsoCardProps = React.ComponentProps<"div"> & {
 };
 
 /** 一块立在自身厚度上的卡片，用法与 shadcn Card 一致。 */
-function IsoCard({ className, depth = 8, style, children, ...props }: IsoCardProps) {
+function IsoCard({ className, depth = 6, style, children, ...props }: IsoCardProps) {
   return (
     <div
       data-slot="iso-card"
@@ -91,7 +91,7 @@ function IsoCardFooter({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="iso-card-footer"
       className={cn(
-        "flex items-center gap-2 border-t border-dashed border-border px-5 pt-4",
+        "flex items-center gap-2 border-t border-dotted border-border px-5 pt-4",
         className,
       )}
       {...props}

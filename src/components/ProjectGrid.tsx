@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Check, Copy } from "lucide-react";
 
-import { cn } from "../lib/utils";
 import type { Project } from "../data/projects";
 import {
   IsoCard,
@@ -12,15 +11,6 @@ import {
   IsoCardHeader,
   IsoCardTitle,
 } from "./ui/iso-card";
-
-const buttonBase =
-  "relative z-30 inline-flex h-8 items-center gap-1.5 rounded-lg border px-3 text-xs font-medium transition-[transform,background-color,color] duration-150 shadow-[2px_2px_0_#d4d4d4] hover:-translate-y-px active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/60 focus-visible:ring-offset-2 focus-visible:ring-offset-card";
-
-const outlineButton =
-  "border-border bg-card text-foreground hover:bg-muted";
-
-const solidButton =
-  "border-foreground bg-foreground text-background hover:bg-accent";
 
 function GithubIcon() {
   return (
@@ -63,9 +53,10 @@ function CopyPromptButton({ prompt }: { prompt: string }) {
   return (
     <button
       type="button"
+      data-variant="solid"
       onClick={handleCopy}
       aria-label={copied ? "Prompt 已复制" : "复制 Prompt"}
-      className={cn(buttonBase, solidButton)}
+      className="iso-button z-30"
     >
       {copied ? (
         <Check size={14} strokeWidth={2} aria-hidden="true" />
@@ -78,7 +69,7 @@ function CopyPromptButton({ prompt }: { prompt: string }) {
 }
 
 function ProjectCard({ project }: { project: Project }) {
-  const hostname = new URL(project.url).hostname;
+  const hasActions = Boolean(project.github || project.prompt);
 
   return (
     <IsoCard className="h-full">
@@ -87,7 +78,7 @@ function ProjectCard({ project }: { project: Project }) {
         target="_blank"
         rel="noreferrer"
         aria-label={`打开 ${project.title}`}
-        className="absolute inset-0 z-20 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/60 focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+        className="absolute inset-0 z-20 focus-visible:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
       />
       <IsoCardHeader>
         <IsoCardTitle className="text-lg">{project.title}</IsoCardTitle>
@@ -99,24 +90,23 @@ function ProjectCard({ project }: { project: Project }) {
         </IsoCardAction>
       </IsoCardHeader>
       <IsoCardContent className="flex-1" />
-      <IsoCardFooter className="justify-between gap-3">
-        <div className="relative z-30 flex flex-wrap items-center gap-2">
+      {hasActions ? (
+        <IsoCardFooter className="justify-end">
           {project.github ? (
             <a
               href={project.github}
               target="_blank"
               rel="noreferrer"
               aria-label={`${project.title} 的 GitHub 仓库`}
-              className={cn(buttonBase, outlineButton)}
+              className="iso-button z-30"
             >
               <GithubIcon />
               <span>GitHub</span>
             </a>
           ) : null}
           {project.prompt ? <CopyPromptButton prompt={project.prompt} /> : null}
-        </div>
-        <span className="font-mono text-[11px] text-muted-foreground">{hostname}</span>
-      </IsoCardFooter>
+        </IsoCardFooter>
+      ) : null}
     </IsoCard>
   );
 }
