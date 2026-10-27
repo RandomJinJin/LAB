@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC",
+    ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, monospace;
+
+  --color-background: #f5f5f5;
+  --color-foreground: #1a1a1a;
+  --color-card: #fbfbfb;
+  --color-card-foreground: #1a1a1a;
+  --color-muted: #eeeeee;
+  --color-muted-foreground: #6b6b6b;
+  --color-border: #d4d4d4;
+  --color-accent: #3f3f3f;
+  --color-accent-foreground: #f5f5f5;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+}
+
+/* iso-card：卡片面 + 45° 硬边立体层 */
+.iso-depth {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.iso-depth__layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+}
+
+.iso-face {
+  position: relative;
+  z-index: 1;
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.iso-card:hover .iso-face {
+  transform: translate(-1px, -1px);
+}
+
+.iso-card:hover .iso-depth {
+  transform: translate(1px, 1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iso-depth,
+  .iso-face {
+    transition: none;
+  }
+
+  .iso-card:hover .iso-face,
+  .iso-card:hover .iso-depth {
+    transform: none;
+  }
+}
