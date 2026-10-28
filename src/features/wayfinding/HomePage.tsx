@@ -36,11 +36,11 @@ const COLOR_CSS_VARS = {
   ["--wayfinding-nav-accent" as string]: wayfindingColors.sign.surfaceActive,
 } as CSSProperties;
 
-// 路由映射
+// 路由映射：LAB 站内用相对路径，本地 dev 与正式域名自动指向当前域名
 const SECTION_ROUTES: Record<SectionId, string> = {
-  home: "https://lab.randomjin.top/",
+  home: "/",
   blog: "https://blog.randomjin.top/posts",
-  project: "https://lab.randomjin.top/",
+  project: "/",
   dudu: "https://blog.randomjin.top/dudu",
   links: "https://randomjin.top/friends",
   about: "https://randomjin.top/about",
