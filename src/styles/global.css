@@ -131,6 +131,27 @@
   transform: translate(1px, 1px);
 }
 
+/* 卡片标签：直角描边，状态标签用实心区分 */
+.iso-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 1.25rem;
+  padding: 0 0.3125rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card);
+  color: var(--color-muted-foreground);
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.iso-tag--solid {
+  border-color: var(--color-foreground);
+  background-color: var(--color-foreground);
+  color: var(--color-background);
+}
+
 /* iso-button：直角按钮 + 3px 偏移轮廓，对应 cardprompt 的 IsoButton depth=3 */
 .iso-button {
   position: relative;

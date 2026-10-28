@@ -81,11 +81,23 @@ function ProjectCard({ project }: { project: Project }) {
         className="absolute inset-0 z-20 focus-visible:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
       />
       <IsoCardHeader>
-        <IsoCardTitle className="text-lg">{project.title}</IsoCardTitle>
-        <IsoCardDescription className="line-clamp-2 leading-6">
+        <div className="col-start-1 row-start-1 flex flex-wrap items-center gap-1.5">
+          <span className="iso-tag">{project.type}</span>
+          <span className={project.status === "开发中" ? "iso-tag iso-tag--solid" : "iso-tag"}>
+            {project.status}
+          </span>
+          <time
+            dateTime={project.date}
+            className="ml-1 font-mono text-[10px] tracking-wide text-muted-foreground"
+          >
+            {project.date.replaceAll("-", ".")}
+          </time>
+        </div>
+        <IsoCardTitle className="row-start-2 text-lg">{project.title}</IsoCardTitle>
+        <IsoCardDescription className="row-start-3 line-clamp-2 leading-6">
           {project.description}
         </IsoCardDescription>
-        <IsoCardAction>
+        <IsoCardAction className="row-start-1 row-span-2">
           <ArrowUpRight className="size-4 text-muted-foreground" aria-hidden="true" />
         </IsoCardAction>
       </IsoCardHeader>
