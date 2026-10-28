@@ -210,7 +210,8 @@ export const LOGO_CONFIG: LogoCircleConfig = {
     zOffset: 0.05, // 沿 Z 方向前移到外圆盘前表面之外
     color: wayfindingColors.logo.ring,
   },
-  logoSrc: null, // TODO: 后续选择合适的照片
+  // 不跟随全局统一 logo 图链，保持无图状态
+  logoSrc: null,
 };
 
 /**
