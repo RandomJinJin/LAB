@@ -32,6 +32,71 @@
   }
 }
 
+/* site-head：与主站一致，品牌居左，右侧 meta 暂留空 */
+.site-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.site-head .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-muted-foreground);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-head .brand:hover {
+  color: var(--color-foreground);
+}
+
+.site-head .brand img {
+  display: block;
+  width: 26px;
+  height: 26px;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  background: #fff;
+}
+
+.site-head .head-meta {
+  display: flex;
+  min-height: 26px;
+  align-items: center;
+  gap: clamp(12px, 2vw, 26px);
+}
+
+/* project-shell：项目页统一「header + 占满剩余空间」的竖向布局 */
+.project-shell {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+}
+
+.project-shell .site-head {
+  padding: 14px clamp(18px, 4vw, 56px);
+}
+
+.project-main {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.project-shell--full {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.project-shell--full .project-main {
+  overflow: hidden;
+}
+
 /* iso-card：直角卡片面 + 右下浅灰硬边立体层 */
 .iso-depth {
   position: absolute;

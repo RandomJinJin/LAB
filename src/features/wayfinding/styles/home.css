@@ -1,0 +1,116 @@
+/* ===========================================================
+   Home — Wayfinding
+   极简、克制、留白主导
+   颜色仅作为反馈，不作装饰
+   =========================================================== */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.home {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  background: var(--wayfinding-page-bg, #ffffff);
+  overflow: hidden;
+  overscroll-behavior: none;
+  font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+}
+
+/* ---- 3D 画布 — 全屏渲染，靠相机框选把路牌放在左侧 1/3 ---- */
+.home__scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  pointer-events: none;
+}
+
+.home__scene canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  /* 启用指针事件，让 HOME 模式下的拖动旋转生效 */
+  /* .home-nav 用 z-index 10 浮在上面，自然抢占右侧 12vw 的事件 */
+  pointer-events: auto;
+}
+
+/* ---- 中部留白 — 不放任何东西 ---- */
+.home__void {
+  position: absolute;
+  top: 0;
+  left: 35vw;
+  width: 50vw;
+  height: 100dvh;
+  pointer-events: none;
+}
+
+/* ---- 右 15% 垂直菜单 ---- */
+.home-nav {
+  position: absolute;
+  top: 50%;
+  right: 12vw;
+  transform: translateY(-50%);
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.home-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.home-nav__link {
+  --nav-accent: var(--wayfinding-nav-accent, #000);
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--wayfinding-nav-muted, #c8c8c8);
+  background: transparent;
+  border: 0;
+  padding: 0.25rem 0;
+  cursor: pointer;
+  transition:
+    color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    font-weight 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  font-family: inherit;
+}
+
+.home-nav__link:hover,
+.home-nav__link.is-active,
+.home-nav__link:focus-visible {
+  color: var(--nav-accent);
+  font-weight: 700;
+  transform: scale(1.06);
+  outline: none;
+}
+
+/* ---- 左下角小标 — 安静的环境提示 ---- */
+.home__caption {
+  position: absolute;
+  left: 4vw;
+  bottom: 4vh;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--wayfinding-caption-muted, #b5b5b5);
+  z-index: 5;
+  pointer-events: none;
+}

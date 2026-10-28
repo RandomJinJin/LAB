@@ -1,0 +1,32 @@
+---
+import SiteHeader from "../components/SiteHeader.astro";
+import { GachaGame } from "../features/gacha";
+import "../styles/global.css";
+
+const title = "Gacha · LAB";
+const description = "人物抽卡机：抽十次，拼出完整画像。";
+---
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/logo.png" />
+  </head>
+  <body>
+    <div class="project-shell project-shell--full">
+      <SiteHeader />
+      <main class="project-main">
+        <GachaGame client:load />
+      </main>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  .project-main .gacha-page {
+    height: 100%;
+  }
+</style>

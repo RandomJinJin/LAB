@@ -14,14 +14,38 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: "今斤",
-    description: "主站与博客，记录代码之外的思考。",
-    url: "https://blog.randomjin.top",
-    github: "https://github.com/RandomJinJin",
+    description: "主站入口：关于我、友链与全站导航。",
+    url: "https://randomjin.top",
+    github: "https://github.com/RandomJinJin/Jins-Cubby",
   },
   {
     title: "LAB",
     description: "你正在浏览的页面，项目与实验的集合。",
     url: "https://lab.randomjin.top",
+    github: "https://github.com/RandomJinJin/LAB",
+  },
+  {
+    title: "Wayfinding",
+    description: "3D 路标主页：转动镜头，跟着牌子去到站内每一个页面。",
+    url: "https://lab.randomjin.top/wayfinding",
+    github: "https://github.com/RandomJinJin/LAB",
+  },
+  {
+    title: "Gacha",
+    description: "人物抽卡机：抽十次，用属性碎片拼出完整画像。",
+    url: "https://lab.randomjin.top/gacha",
+    github: "https://github.com/RandomJinJin/LAB",
+  },
+  {
+    title: "DodgeButton",
+    description: "一个会躲开鼠标的按钮，越靠近越难点到。",
+    url: "https://lab.randomjin.top/dodgebutton",
+    github: "https://github.com/RandomJinJin/LAB",
+  },
+  {
+    title: "ChatBubble",
+    description: "柔和纸色的聊天消息气泡，散落堆叠成一片。",
+    url: "https://lab.randomjin.top/chatbubble",
     github: "https://github.com/RandomJinJin/LAB",
   },
   {

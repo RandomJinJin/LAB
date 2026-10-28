@@ -1,0 +1,41 @@
+---
+import SiteHeader from "../components/SiteHeader.astro";
+import { HomePage } from "../features/wayfinding";
+import "../styles/global.css";
+
+const title = "Wayfinding · LAB";
+const description = "3D 路标主页：指回站点里的每一个页面。";
+---
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/logo.png" />
+  </head>
+  <body>
+    <div class="project-shell project-shell--full">
+      <SiteHeader />
+      <main class="project-main">
+        <HomePage client:load />
+      </main>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  /* home.css 原本用 position:fixed + 100dvh 铺满视口；在 LAB 里它只占 header 下方的剩余区域 */
+  .project-main .home {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .project-main .home__scene {
+    width: 100%;
+    height: 100%;
+  }
+</style>

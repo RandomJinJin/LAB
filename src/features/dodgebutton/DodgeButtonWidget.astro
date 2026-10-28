@@ -1,0 +1,24 @@
+---
+import { DodgeButton } from "./components/DodgeButton";
+
+interface Props {
+  playgroundRadius?: number;
+  avoidanceRadius?: number;
+  buttonSize?: number;
+}
+
+const {
+  playgroundRadius = 120,
+  avoidanceRadius = 80,
+  buttonSize = 56,
+} = Astro.props;
+---
+
+<div class="flex justify-center py-4">
+  <DodgeButton
+    client:load
+    playgroundRadius={playgroundRadius}
+    avoidanceRadius={avoidanceRadius}
+    buttonSize={buttonSize}
+  />
+</div>

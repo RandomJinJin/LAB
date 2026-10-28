@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import ProjectGrid from "../components/ProjectGrid";
+import SiteHeader from "../components/SiteHeader.astro";
 import { projects } from "../data/projects";
 
 const year = new Date().getFullYear();
@@ -25,24 +26,7 @@ const description = "项目实验室：自用工具、实验与 prompt 片段的
   <body class="min-h-dvh bg-background text-foreground antialiased">
     <main class="mx-auto w-full max-w-5xl px-6 sm:px-8">
       <header class="pt-10 sm:pt-16">
-        <div class="flex items-center justify-between gap-4">
-          <a
-            href="https://blog.randomjin.top"
-            class="inline-flex items-center gap-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <img src="/logo.png" alt="" width="28" height="28" class="size-7 border border-border object-cover" />
-            <span>今斤</span>
-          </a>
-          <a
-            href="https://github.com/RandomJinJin/LAB"
-            target="_blank"
-            rel="noreferrer"
-            class="inline-flex items-center gap-1 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
-          >
-            GitHub
-            <span aria-hidden="true">↗</span>
-          </a>
-        </div>
+        <SiteHeader />
 
         <div class="mt-14 border-b border-border pb-8 sm:mt-20">
           <p class="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">

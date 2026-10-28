@@ -1,0 +1,26 @@
+---
+import SiteHeader from "../components/SiteHeader.astro";
+import { ScrapsStack } from "../features/chatbubble";
+import "../styles/global.css";
+
+const title = "ChatBubble · LAB";
+const description = "柔和纸色聊天消息气泡 · 卡片堆叠";
+---
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/logo.png" />
+  </head>
+  <body>
+    <div class="project-shell">
+      <SiteHeader />
+      <main class="project-main">
+        <ScrapsStack client:load />
+      </main>
+    </div>
+  </body>
+</html>
