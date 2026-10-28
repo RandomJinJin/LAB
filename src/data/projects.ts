@@ -20,24 +20,7 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-  {
-    title: "今斤",
-    description: "主站入口：关于我、友链与全站导航。",
-    url: "https://randomjin.top",
-    github: "https://github.com/RandomJinJin/Jins-Cubby",
-    type: "站点",
-    status: "已上线",
-    date: "2026-10",
-  },
-  {
-    title: "LAB",
-    description: "你正在浏览的页面，项目与实验的集合。",
-    url: "/",
-    github: "https://github.com/RandomJinJin/LAB",
-    type: "站点",
-    status: "已上线",
-    date: "2026-10",
-  },
+ 
   {
     title: "Wayfinding",
     description: "3D 路标主页：转动镜头，跟着牌子去到站内每一个页面。",
@@ -80,7 +63,7 @@ export const projects: Project[] = [
     url: "/",
     github: "https://github.com/RandomJinJin/LAB",
     type: "工具",
-    status: "已上线",
+    status: "开发中",
     date: "2026-10",
     prompt: `你是一位擅长把复杂概念讲清楚的编辑。请把下面这段技术说明改写成面向非技术读者的版本：
 1. 保留原意，不新增事实；
