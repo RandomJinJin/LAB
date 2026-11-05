@@ -38,34 +38,6 @@
   margin-right: auto; /* 紧贴左侧的返回主页按钮 */
 }
 
-/* --- 回到主页 button（mdi home-variant 图标，黑色，无边框） --- */
-.gacha-home {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  flex-shrink: 0;
-  color: var(--g-fg);
-  text-decoration: none;
-  transition:
-    opacity 0.15s ease,
-    transform 0.1s ease;
-}
-
-.gacha-home svg {
-  display: block;
-  fill: currentColor;
-}
-
-.gacha-home:hover {
-  opacity: 0.6;
-}
-
-.gacha-home:active {
-  transform: scale(0.92);
-}
-
 /* --- 主区：左面板 + 右立绘 --- */
 .gacha-main {
   position: relative;

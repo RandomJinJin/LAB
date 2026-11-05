@@ -154,22 +154,6 @@ export function GachaGame() {
   return (
     <section className="gacha-page">
       <header className="gacha-top">
-        <a
-          className="gacha-home"
-          href="/"
-          aria-label="回到主页"
-          title="回到主页"
-        >
-          <svg
-            width="26"
-            height="26"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path d="M12 2 L1 9 H3 V22 H10 V15 H14 V22 H21 V9 H23 Z" />
-          </svg>
-        </a>
         <h1 className="gacha-title"> // DEMO (ง •̀_•́)ง</h1>
       </header>
 

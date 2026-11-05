@@ -83,7 +83,13 @@
 }
 
 .project-shell .site-head {
-  padding: 14px clamp(18px, 4vw, 56px);
+  /* 与主站（randomjin.top）页面内边距一致，让 brand 落在页面左上角同一位置 */
+  padding: clamp(18px, 3vw, 36px) clamp(18px, 4vw, 56px);
+}
+
+/* 独立页顶栏：brand 与主站同位置（页面左上角 + 主站内边距），内容仍留在容器里 */
+.site-topbar {
+  padding: clamp(18px, 3vw, 36px) clamp(18px, 4vw, 56px);
 }
 
 .project-main {
