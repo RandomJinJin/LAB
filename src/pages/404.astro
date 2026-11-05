@@ -1,0 +1,21 @@
+---
+// 404 已收敛到主站：本页仅负责把访客带到 randomjin.top/404
+// Vercel 会以 404 状态码提供本页，浏览器端再跳转
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content="0; url=https://randomjin.top/404" />
+    <title>404 · 今斤</title>
+  </head>
+  <body>
+    <p>页面不存在，正在跳转到 <a href="https://randomjin.top/404">randomjin.top/404</a>…</p>
+    <script is:inline>
+      location.replace('https://randomjin.top/404');
+    </script>
+  </body>
+</html>
