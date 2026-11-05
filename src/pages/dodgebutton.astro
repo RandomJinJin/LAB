@@ -16,8 +16,13 @@ const description = "一个会躲开鼠标的按钮。";
     <link rel="icon" type="image/png" href="https://img.randomjin.top/logo/logo.png" />
   </head>
   <body>
+    <SiteHeader
+      crumbs={[
+        { label: "LAB", href: "https://lab.randomjin.top/" },
+        { label: "DodgeButton" },
+      ]}
+    />
     <div class="project-shell">
-      <SiteHeader />
       <main class="project-main flex items-center justify-center">
         <DodgeButtonWidget />
       </main>

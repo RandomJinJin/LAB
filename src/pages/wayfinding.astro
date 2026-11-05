@@ -16,8 +16,13 @@ const description = "3D 路标主页：指回站点里的每一个页面。";
     <link rel="icon" type="image/png" href="https://img.randomjin.top/logo/logo.png" />
   </head>
   <body>
+    <SiteHeader
+      crumbs={[
+        { label: "LAB", href: "https://lab.randomjin.top/" },
+        { label: "Wayfinding" },
+      ]}
+    />
     <div class="project-shell project-shell--full">
-      <SiteHeader />
       <main class="project-main">
         <HomePage client:load />
       </main>
@@ -26,7 +31,7 @@ const description = "3D 路标主页：指回站点里的每一个页面。";
 </html>
 
 <style is:global>
-  /* home.css 原本用 position:fixed + 100dvh 铺满视口；在 LAB 里它只占 header 下方的剩余区域 */
+  /* home.css 原本用 position:fixed + 100dvh 铺满视口；header 悬浮后，场景直接铺满全屏 */
   .project-main .home {
     position: absolute;
     inset: 0;

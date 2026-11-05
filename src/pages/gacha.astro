@@ -16,8 +16,13 @@ const description = "人物抽卡机：抽十次，拼出完整画像。";
     <link rel="icon" type="image/png" href="https://img.randomjin.top/logo/logo.png" />
   </head>
   <body>
+    <SiteHeader
+      crumbs={[
+        { label: "LAB", href: "https://lab.randomjin.top/" },
+        { label: "Gacha" },
+      ]}
+    />
     <div class="project-shell project-shell--full">
-      <SiteHeader />
       <main class="project-main">
         <GachaGame client:load />
       </main>
@@ -26,6 +31,10 @@ const description = "人物抽卡机：抽十次，拼出完整画像。";
 </html>
 
 <style is:global>
+  .project-main {
+    padding-top: var(--site-header-height);
+  }
+
   .project-main .gacha-page {
     height: 100%;
   }

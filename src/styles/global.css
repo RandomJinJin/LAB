@@ -7,6 +7,10 @@
   --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, monospace;
 }
 
+:root {
+  --site-header-height: 56px;
+}
+
 /* 色值由 tokens.css 提供（sync-tokens.mjs 生成），这里只做 Tailwind 语义映射 */
 @theme inline {
   --color-background: var(--bg);
@@ -36,16 +40,26 @@
   }
 }
 
-/* site-head：与主站一致，品牌居左，右侧 meta 暂留空 */
-.site-head {
+/* site-header：三站统一，home 按钮居左、面包屑紧邻，右侧留空 */
+.site-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 60;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  gap: clamp(12px, 2vw, 26px);
+  padding: 14px clamp(18px, 4vw, 56px);
+  background: color-mix(in srgb, var(--color-background) 72%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  backdrop-filter: blur(12px) saturate(140%);
 }
 
-.site-head .brand {
+.site-header-brand {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 10px;
   color: var(--color-muted-foreground);
@@ -55,11 +69,11 @@
   transition: color 0.2s ease;
 }
 
-.site-head .brand:hover {
+.site-header-brand:hover {
   color: var(--color-foreground);
 }
 
-.site-head .brand img {
+.site-header-brand img {
   display: block;
   width: 26px;
   height: 26px;
@@ -68,28 +82,62 @@
   background: #fff;
 }
 
-.site-head .head-meta {
-  display: flex;
-  min-height: 26px;
-  align-items: center;
-  gap: clamp(12px, 2vw, 26px);
+.site-header-crumbs {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
-/* project-shell：项目页统一「header + 占满剩余空间」的竖向布局 */
+.site-header-crumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.site-header-crumbs ol {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.site-header-crumbs li {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.site-header-crumbs a {
+  color: color-mix(in srgb, var(--color-muted-foreground) 70%, transparent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-header-crumbs a:hover {
+  color: var(--color-foreground);
+}
+
+.site-header-crumbs .is-current {
+  max-width: 40ch;
+  overflow: hidden;
+  color: var(--color-foreground);
+  text-overflow: ellipsis;
+}
+
+.site-header-crumbs .sep {
+  margin: 0 8px;
+  color: color-mix(in srgb, var(--color-muted-foreground) 30%, transparent);
+}
+
+/* project-shell：项目页统一竖向布局，header 固定悬浮后内容占满剩余空间 */
 .project-shell {
   display: flex;
   min-height: 100dvh;
   flex-direction: column;
-}
-
-.project-shell .site-head {
-  /* 与主站（randomjin.top）页面内边距一致，让 brand 落在页面左上角同一位置 */
-  padding: clamp(18px, 3vw, 36px) clamp(18px, 4vw, 56px);
-}
-
-/* 独立页顶栏：brand 与主站同位置（页面左上角 + 主站内边距），内容仍留在容器里 */
-.site-topbar {
-  padding: clamp(18px, 3vw, 36px) clamp(18px, 4vw, 56px);
 }
 
 .project-main {
